@@ -12,15 +12,19 @@ let gameMap = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 ];
 
-let tileW = 40, tileH = 40;
-let mapW = 10, mapH = 10;
-let currentSecond = 0, frameCount = 0, framesLastSecond = 0;
+let tileW = 40;
+let tileH = 40;
+let mapW = 10;
+let mapH = 10;
+let currentSecond = 0;
+let frameCount = 0;
+let framesLastSecond = 0;
 
 window.onload = function(){
     //you want to let the browser tell you when its ready for you to draw to the canvas. The easiest way to do this is to use the requestAnimationFrame function and designate a 'callback' - a function we want exectued when the browser is ready.
     ctx = document.getElementById('gameBoard').getContext('2d');
     requestAnimationFrame(drawGameBoard);
-    ctx.font = 'bold 10pt sans-serif';
+    ctx.font = 'bold 10px sans-serif';
 }
 
 function drawGameBoard(){
@@ -39,19 +43,14 @@ function drawGameBoard(){
         frameCount++;
     }
     //now we begin our main drawing loops- to draw our map, we'll be using 2 nested loops; our outer loop(yloop), does down the map row by row, whilst inner loop(x loop) goes from left to right over each column within the current row
-    for(var y = 0; y < mapH; ++y){
-        for(var x = 0; x < mapW; ++x) {
-            switch(gameMap[((y*mapW)+x)])
-			{
-				case 0:
-					ctx.fillStyle = "#000000";
-					break;
-				default:
-					ctx.fillStyle = "#ccffcc";
-			}
-
-			ctx.fillRect( x*tileW, y*tileH, tileW, tileH);
-
+    for(var y = 0; y < mapH; y++){
+        for(var x = 0; x < mapW; x++) {
+            switch(gameMap[((y*mapW)+x)]) {
+                case 0: ctx.fillStyle = '#00000';
+                default:
+                    ctx.fillStyle = "#ccffcc";
+            }
+            ctx.fillRect(x*tileW, y*tileH, tileW, tileH);
         }
     }
     ctx.fillStyle = "#ff0000";
@@ -60,4 +59,3 @@ function drawGameBoard(){
 	requestAnimationFrame(drawGameBoard);
 
 }
-
