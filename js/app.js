@@ -44,10 +44,10 @@ function drawGameBoard(){
             switch(gameMap[((y*mapW)+x)])
 			{
 				case 0:
-					ctx.fillStyle = "#000000";
+					ctx.fillStyle = "#685b48";
 					break;
 				default:
-					ctx.fillStyle = "#ccffcc";
+					ctx.fillStyle = "#5aa457";
 			}
 
 			ctx.fillRect( x*tileW, y*tileH, tileW, tileH);
